@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
 import Home from './Home.vue'
-// import VueRouter from 'vue-router'
-import VueRouter from '../vue-router.js'
+import VueRouter from 'vue-router'
+// if import VueRouter from local modifyed vue-router file ,async components rendering normal
+// import VueRouter from '../vue-router.js'
 
 Vue.use(VueRouter)
 
