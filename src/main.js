@@ -16,8 +16,8 @@ Vue.use(VueRouter)
 // Webpack will automatically split and lazy-load the split modules.
 // - https://webpack.github.io/docs/code-splitting.html
 
-const Foo = resolve => require(['./Foo.vue'], resolve)
-const Bar = resolve => require(['./Bar.vue'], resolve)
+const Foo = () => System.import('./Foo.vue')
+const Bar = () => System.import('./Bar.vue')
 
 // If using Webpack 2, you can also do:
 // const Foo = () => System.import('./Foo.vue')
