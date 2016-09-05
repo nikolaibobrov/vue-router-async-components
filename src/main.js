@@ -7,7 +7,7 @@ import VueRouter from 'vue-router'
 // import VueRouter from '../vue-router.js'
 
 Vue.use(VueRouter)
-/* dynamic setup component map can not work normaly */
+/* dynamic setup component map can not work normally */
 // function map (items, converter) {
 //   let list = []
 //   for (let item of items) {
@@ -23,7 +23,7 @@ Vue.use(VueRouter)
 // let routes = map(menu, item => { return { path: item.path, component: () => System.import(item.handler) } })
 
 
-/* hard code component map can work normaly */
+/* hard code component map can work normally */
 const Home = () => System.import('./Home.vue')
 const Foo = () => System.import('./Foo.vue')
 const Bar = () => System.import('./Bar.vue')
