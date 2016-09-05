@@ -1,36 +1,42 @@
 import Vue from 'vue'
 import App from './App.vue'
-import Home from './Home.vue'
+// import Home from './Home.vue'
 import VueRouter from 'vue-router'
+// import _ from 'lodash'
 // if import VueRouter from local modifyed vue-router file ,async components rendering normal
 // import VueRouter from '../vue-router.js'
 
 Vue.use(VueRouter)
+/* dynamic setup component map can not work normaly */
+// function map (items, converter) {
+//   let list = []
+//   for (let item of items) {
+//     let to = converter(item)
+//     list.push(to)
+//   }
+//   return list
+// }
+/* mock read config from some place */
+// let menu = [{ path: '/', handler: './Home.vue' },
+//   { path: '/foo', handler: './Foo.vue' },
+//   { path: '/bar', handler: './Bar.vue' }]
+// let routes = map(menu, item => { return { path: item.path, component: () => System.import(item.handler) } })
 
 
-
-// define Foo & Bar as async components.
-// async components are defined as: resolve => { resolve(Component) }
-
-// In Webpack we can use the AMD require syntax to signify a "split point"
-// Webpack will automatically split and lazy-load the split modules.
-// - https://webpack.github.io/docs/code-splitting.html
-
+/* hard code component map can work normaly */
+const Home = () => System.import('./Home.vue')
 const Foo = () => System.import('./Foo.vue')
 const Bar = () => System.import('./Bar.vue')
+let routes = []
+routes.push({ path: '/', component: Home })
+routes.push({ path: '/foo', component: Foo })
+routes.push({ path: '/bar', component: Bar })
 
-// If using Webpack 2, you can also do:
-// const Foo = () => System.import('./Foo.vue')
-
+console.log(routes)
 const router = new VueRouter({
   mode: 'history',
   base: __dirname,
-  routes: [
-    { path: '/', component: Home },
-    // Just use them normally in the route config
-    { path: '/foo', component: Foo },
-    { path: '/bar', component: Bar }
-  ]
+  routes
 })
 
 /* eslint-disable no-new */
